@@ -48,7 +48,7 @@ export default function RoleSwitcherPage() {
             <Car size={24} className="text-white" />
           </div>
           <div className="text-left">
-            <h1 className="text-xl font-bold text-text-primary leading-tight">AutoCare Connect</h1>
+            <h1 className="text-xl font-bold text-text-primary leading-tight">BikeCare Connect</h1>
             <p className="text-xs font-semibold uppercase tracking-widest text-text-secondary">Enterprise Management</p>
           </div>
         </div>

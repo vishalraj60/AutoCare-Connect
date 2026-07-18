@@ -49,7 +49,7 @@ export default function Sidebar() {
             <Car size={20} className="text-primary" />
           </div>
           <div className="min-w-0">
-            <p className="text-white font-bold text-sm leading-tight">AutoCare Connect</p>
+            <p className="text-white font-bold text-sm leading-tight">BikeCare Connect</p>
             <p className="text-slate-400 text-[9px] font-semibold uppercase tracking-widest leading-tight mt-0.5">
               Enterprise Management
             </p>

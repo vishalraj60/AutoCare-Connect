@@ -4,6 +4,7 @@ import { RoleProvider } from './context/RoleContext';
 import { JobProvider } from './context/JobContext';
 
 // Pages
+import LandingPage from './pages/LandingPage';
 import RoleSwitcherPage from './pages/RoleSwitcherPage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import { AdminVehicles, AdminBookings, AdminInventory, AdminReports, AdminProfile } from './pages/admin/AdminPlaceholders';
@@ -18,8 +19,11 @@ export default function App() {
       <RoleProvider>
         <JobProvider>
           <Routes>
-            {/* Role Switcher */}
-            <Route path="/" element={<RoleSwitcherPage />} />
+            {/* Public Landing Page */}
+            <Route path="/" element={<LandingPage />} />
+
+            {/* Role Switcher (Sign In / Book Service flow) */}
+            <Route path="/role-select" element={<RoleSwitcherPage />} />
 
             {/* Admin routes */}
             <Route path="/admin/dashboard"  element={<AdminDashboard />} />
