@@ -17,7 +17,6 @@ import {
   Rss,
   AtSign,
   Send,
-
   Smartphone,
   Menu,
   X,
@@ -26,6 +25,9 @@ import {
 } from 'lucide-react';
 import heroWork from '../assets/hero-work.jpg';
 import heroBike from '../assets/hero-work2.jpg';
+import testimonialAvatars from '../assets/testimonial-avatars.png';
+import ServiceDetailsModal from '../components/ui/ServiceDetailsModal';
+import { SERVICES_DATA } from '../data/services';
 
 const HERO_SLIDES = [
   {
@@ -41,7 +43,6 @@ const HERO_SLIDES = [
     tagSub: 'Real-time service updates',
   },
 ];
-import testimonialAvatars from '../assets/testimonial-avatars.png';
 
 /* ─── Constants ─── */
 const ACCENT = '#2563EB';
@@ -56,43 +57,14 @@ const STATS_BAR = [
   { value: '98%', label: 'Satisfaction' },
 ];
 
-const SERVICES = [
-  {
-    icon: Droplets,
-    title: 'Engine Oil Service',
-    desc: 'Premium engine oil and oil filter replacement for smoother performance and longer engine life.',
-  },
-  {
-    icon: CircleDot,
-    title: 'Brake Service',
-    desc: 'Complete inspection, brake pad adjustment or replacement, and brake fluid check for maximum safety.',
-    price: '₹699'
-  },
-  {
-    icon: Cpu,
-    title: 'Engine Diagnostics',
-    desc: 'Advanced diagnostic scan to detect engine faults, sensor issues, and performance problems.',
-
-  },
-  {
-    icon: BatteryCharging,
-    title: 'Battery Check',
-    desc: 'Battery health inspection, charging system test, and replacement if required.',
-
-  },
-  {
-    icon: Workflow,
-    title: 'Chain & Wheel Service',
-    desc: 'Chain cleaning, lubrication, tension adjustment, and wheel alignment for a smoother ride.',
-
-  },
-  {
-    icon: Gauge,
-    title: 'Engine Tuning',
-    desc: 'Complete engine tuning and performance optimization for smoother rides, better mileage, and enhanced reliability.',
-
-  },
-];
+/* Service list driven from SERVICES_DATA */
+const SERVICES = SERVICES_DATA.map((s) => ({
+  id: s.id,
+  icon: s.icon,
+  title: s.title,
+  desc: s.desc,
+  price: s.price,
+}));
 
 const FEATURES = [
   { icon: Target, title: 'Real-Time Tracking', desc: 'Watch every step of the service through our live dashboard, from intake to final hand-off.' },
@@ -108,9 +80,9 @@ const STEPS = [
 ];
 
 const TESTIMONIALS = [
-  { name: 'James Sterling', vehicle: 'Porsche Cayenne 2023', avatarPos: '16.5%', quote: "The transparency is unmatched. I've never had a garage send me a video walkthrough of my engine before approving service. Truly the future." },
-  { name: 'Sarah Chen', vehicle: 'Tesla Model S', avatarPos: '50%', quote: "The digital service records are a game-changer. Selling my last vehicle was so easy because I could prove every single service was done on time." },
-  { name: 'David Miller', vehicle: 'BMW X5 2022', avatarPos: '83.5%', quote: "Booking is so fast. I can schedule a service while waiting in line for coffee, and I know exactly what it's going to cost before I arrive." },
+  { name: 'Vishal Raj', vehicle: 'NS 400z', avatarPos: '16.5%', quote: "The transparency is unmatched. I've never had a garage send me a video walkthrough of my engine before approving service. Truly the future." },
+  { name: 'KUTTY', vehicle: 'D390', avatarPos: '50%', quote: "The digital service records are a game-changer. Selling my last vehicle was so easy because I could prove every single service was done on time." },
+  { name: 'MYTH', vehicle: 'NS200', avatarPos: '83.5%', quote: "Booking is so fast. I can schedule a service while waiting in line for coffee, and I know exactly what it's going to cost before I arrive." },
 ];
 
 const FOOTER_SERVICES = ['General Maintenance', 'Brake Specialist', 'Engine Diagnostic', 'Tire & Alignment', 'Electric Vehicle Care'];
@@ -149,6 +121,24 @@ export default function LandingPage() {
   const [activeLink, setActiveLink] = useState('Home');
   const intervalRef = useRef(null);
 
+  /* ─── Modal state ─── */
+  const [selectedServiceId, setSelectedServiceId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = useCallback((serviceId) => {
+    setSelectedServiceId(serviceId);
+    setIsModalOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedServiceId(null), 300);
+  }, []);
+
+  const handleServiceChange = useCallback((serviceId) => {
+    setSelectedServiceId(serviceId);
+  }, []);
+
   /* ─── Smooth-scroll helper ─── */
   const SECTION_IDS = {
     'Home': 'home',
@@ -161,7 +151,7 @@ export default function LandingPage() {
     if (!id) return;
     const el = document.getElementById(id);
     if (!el) return;
-    const navHeight = 64; // px — matches h-16 sticky nav
+    const navHeight = 64;
     const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
     window.scrollTo({ top, behavior: 'smooth' });
     setActiveLink(linkName);
@@ -465,9 +455,14 @@ export default function LandingPage() {
                   <p className="text-sm text-[#64748B] leading-relaxed">{svc.desc}</p>
                 </div>
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-[#F1F5F9]">
-
-                  <button className="flex items-center gap-1 text-xs font-bold hover:underline" style={{ color: ACCENT }}>
-                    Learn More <ChevronRight size={13} />
+                  <button
+                    onClick={() => openModal(svc.id)}
+                    className="flex items-center gap-1 text-xs font-bold hover:underline transition-all hover:gap-2 group/btn"
+                    style={{ color: ACCENT }}
+                    aria-label={`Learn more about ${svc.title}`}
+                  >
+                    Learn More
+                    <ChevronRight size={13} className="transition-transform group-hover/btn:translate-x-0.5" />
                   </button>
                 </div>
               </div>
@@ -775,6 +770,14 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* ══ SERVICE DETAILS MODAL ═══════════════════════════════════ */}
+      <ServiceDetailsModal
+        serviceId={selectedServiceId}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onServiceChange={handleServiceChange}
+      />
     </div>
   );
 }
