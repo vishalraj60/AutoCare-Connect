@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { SERVICES_DATA, getServiceById } from '../../data/services';
 import { Link } from 'react-router-dom';
+import ContactWorkshopModal from './ContactWorkshopModal';
 
 /* ─── Severity colours ─────────────────────────────────────────── */
 const SEVERITY = {
@@ -89,6 +90,9 @@ export default function ServiceDetailsModal({ serviceId, isOpen, onClose, onServ
   const scrollRef = useRef(null);
   const prevScrollY = useRef(0);
   const service = serviceId ? getServiceById(serviceId) : null;
+
+  /* ── Contact Workshop nested modal ──────────────────────────── */
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   /* ── Lock body scroll on open ─────────────────────────────────── */
   useEffect(() => {
@@ -478,13 +482,12 @@ export default function ServiceDetailsModal({ serviceId, isOpen, onClose, onServ
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <Link
-                to="/role-select"
-                onClick={onClose}
-                className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold border-2 border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900 transition-all"
+              <button
+                onClick={() => setIsContactOpen(true)}
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold border-2 border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-700 transition-all"
               >
                 <Phone size={13} /> Contact Workshop
-              </Link>
+              </button>
               <Link
                 to="/role-select"
                 onClick={onClose}
@@ -503,6 +506,12 @@ export default function ServiceDetailsModal({ serviceId, isOpen, onClose, onServ
           </div>
         </footer>
       </div>
+
+      {/* ── Nested Contact Workshop Modal ────────────────────── */}
+      <ContactWorkshopModal
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
     </div>
   );
 }
