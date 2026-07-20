@@ -4,17 +4,17 @@
 
 export const WORKSHOPS = [
   {
-    id: 'coimbatore-mg-road',
+    id: 'tenkasi-main-road',
     name: 'BikeCare Connect',
     subtitle: 'Authorized Service Center',
     address: {
-      line1: '123 MG Road',
-      line2: 'Coimbatore',
+      line1: 'Main Road',
+      line2: 'Tenkasi',
       line3: 'Tamil Nadu, India',
-      pincode: '641001',
+      pincode: '627806',
     },
-    phone: '+91 98765 43210',
-    whatsapp: '+919876543210',
+    phone: '+91 76049 37394',
+    whatsapp: '917604937394',
     email: 'support@bikecareconnect.com',
     emergency: '1800-123-4567',
     rating: 4.9,
@@ -28,11 +28,11 @@ export const WORKSHOPS = [
       { days: 'Sunday', hours: 'Closed' },
     ],
     coordinates: {
-      lat: 11.0168,
-      lng: 76.9558,
-      mapsUrl: 'https://maps.google.com/?q=11.0168,76.9558',
-      embedSrc: 'https://maps.google.com/maps?q=11.0168,76.9558&output=embed',
-      directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=11.0168,76.9558',
+      lat: 8.9602,
+      lng: 77.3153,
+      mapsUrl: 'https://maps.google.com/?q=Main+Road,Tenkasi,Tamil+Nadu+627806,India',
+      embedSrc: 'https://maps.google.com/maps?q=Main+Road,Tenkasi,Tamil+Nadu+627806,India&output=embed',
+      directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Main+Road,Tenkasi,Tamil+Nadu+627806,India',
     },
     social: {
       facebook: 'https://facebook.com/',

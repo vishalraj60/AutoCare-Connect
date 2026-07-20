@@ -163,12 +163,14 @@ export default function ContactWorkshopModal({ isOpen, onClose, workshop = DEFAU
     [onClose],
   );
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-      if (scrollRef.current) scrollRef.current.scrollTop = 0;
-    }
+    if (isOpen) document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, handleKeyDown]);
+
+  /* ── Reset scroll only when modal first opens ────────────────── */
+  useEffect(() => {
+    if (isOpen && scrollRef.current) scrollRef.current.scrollTop = 0;
+  }, [isOpen]);
 
   /* ── Backdrop click ───────────────────────────────────────────── */
   const handleBackdropClick = (e) => {
@@ -362,146 +364,6 @@ export default function ContactWorkshopModal({ isOpen, onClose, workshop = DEFAU
             </div>
           </div>
 
-          {/* ─ QUICK BOOKING FORM ──────────────────────────────── */}
-          <div>
-            <SectionLabel>Book Appointment</SectionLabel>
-            <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {/* Name */}
-                <div>
-                  <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Customer Name</label>
-                  <div className="relative">
-                    <User size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <input
-                      type="text"
-                      value={form.name}
-                      onChange={e => updateForm('name', e.target.value)}
-                      placeholder="Your full name"
-                      className="w-full pl-8 pr-3 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50"
-                    />
-                  </div>
-                </div>
-                {/* Phone */}
-                <div>
-                  <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Phone Number</label>
-                  <div className="relative">
-                    <Phone size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <input
-                      type="tel"
-                      value={form.phone}
-                      onChange={e => updateForm('phone', e.target.value)}
-                      placeholder="+91 00000 00000"
-                      className="w-full pl-8 pr-3 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50"
-                    />
-                  </div>
-                </div>
-                {/* Brand */}
-                <div>
-                  <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Bike Brand</label>
-                  <div className="relative">
-                    <Bike size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <input
-                      type="text"
-                      value={form.brand}
-                      onChange={e => updateForm('brand', e.target.value)}
-                      placeholder="e.g. KTM, Honda, Bajaj"
-                      className="w-full pl-8 pr-3 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50"
-                    />
-                  </div>
-                </div>
-                {/* Model */}
-                <div>
-                  <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Bike Model</label>
-                  <div className="relative">
-                    <Bike size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <input
-                      type="text"
-                      value={form.model}
-                      onChange={e => updateForm('model', e.target.value)}
-                      placeholder="e.g. Duke 390, CBR 650R"
-                      className="w-full pl-8 pr-3 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50"
-                    />
-                  </div>
-                </div>
-                {/* Service */}
-                <div>
-                  <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Service Required</label>
-                  <select
-                    value={form.service}
-                    onChange={e => updateForm('service', e.target.value)}
-                    className="w-full px-3 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 text-slate-700"
-                  >
-                    <option value="">Select a service</option>
-                    <option>Engine Oil Service</option>
-                    <option>Brake Service</option>
-                    <option>Engine Diagnostics</option>
-                    <option>Battery Check</option>
-                    <option>Chain &amp; Wheel Service</option>
-                    <option>Engine Tuning</option>
-                    <option>General Service</option>
-                  </select>
-                </div>
-                {/* Date */}
-                <div>
-                  <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Preferred Date</label>
-                  <div className="relative">
-                    <CalendarDays size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <input
-                      type="date"
-                      value={form.date}
-                      onChange={e => updateForm('date', e.target.value)}
-                      className="w-full pl-8 pr-3 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50"
-                    />
-                  </div>
-                </div>
-                {/* Time */}
-                <div>
-                  <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Preferred Time</label>
-                  <div className="relative">
-                    <Clock size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <select
-                      value={form.time}
-                      onChange={e => updateForm('time', e.target.value)}
-                      className="w-full pl-8 pr-3 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 text-slate-700"
-                    >
-                      <option value="">Select time slot</option>
-                      {['9:00 AM','10:00 AM','11:00 AM','12:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM'].map(t => (
-                        <option key={t}>{t}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                {/* Message */}
-                <div className="sm:col-span-2">
-                  <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Message (Optional)</label>
-                  <textarea
-                    value={form.message}
-                    onChange={e => updateForm('message', e.target.value)}
-                    placeholder="Describe your issue or any special requirements..."
-                    rows={3}
-                    className="w-full px-3 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all bg-slate-50 resize-none"
-                  />
-                </div>
-              </div>
-
-              {/* Form buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-1">
-                <button
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold border-2 border-blue-200 text-blue-700 hover:bg-blue-50 transition-all"
-                  onClick={() => alert('Callback request sent!')}
-                >
-                  <Phone size={13} /> Request Callback
-                </button>
-                <button
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold text-white hover:opacity-90 transition-opacity shadow-md shadow-blue-300/40"
-                  style={{ background: 'linear-gradient(135deg,#2563EB,#1d4ed8)' }}
-                  onClick={() => alert('Booking submitted!')}
-                >
-                  <Send size={13} /> Book Service
-                </button>
-              </div>
-            </div>
-          </div>
 
           {/* ─ EMERGENCY SUPPORT ───────────────────────────────── */}
           <div className="bg-gradient-to-r from-red-500 to-rose-600 rounded-2xl p-5 text-white">
@@ -608,15 +470,7 @@ export default function ContactWorkshopModal({ isOpen, onClose, workshop = DEFAU
             </div>
           </div>
 
-          {/* ─ FAQ ─────────────────────────────────────────────── */}
-          <div>
-            <SectionLabel>Frequently Asked Questions</SectionLabel>
-            <div className="flex flex-col gap-2">
-              {workshop.faqs.map((faq, i) => (
-                <FaqItem key={i} q={faq.q} a={faq.a} />
-              ))}
-            </div>
-          </div>
+
 
           <div className="h-4" />
         </div>
