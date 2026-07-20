@@ -5,6 +5,7 @@ import {
   TrendingUp, Settings, User, LogOut, Wrench,
 } from 'lucide-react';
 import { useRole } from '../../context/RoleContext';
+import { useAuth } from '../../context/AuthContext';
 
 export const NAV_CONFIGS = {
   admin: [
@@ -31,12 +32,13 @@ export const NAV_CONFIGS = {
 };
 
 export default function Sidebar() {
-  const { role, setRole } = useRole();
+  const { role } = useRole();
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const navItems = NAV_CONFIGS[role] || NAV_CONFIGS.admin;
 
   const handleLogout = () => {
-    setRole(null);
+    logout();
     navigate('/');
   };
 

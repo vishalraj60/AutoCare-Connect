@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
+import { useAuth } from './AuthContext';
 
 const RoleContext = createContext(null);
 
@@ -8,12 +9,15 @@ export const ROLES = {
   MECHANIC: 'mechanic',
 };
 
+/**
+ * RoleProvider now derives role from AuthContext so existing
+ * useRole() calls in dashboards continue to work unchanged.
+ */
 export function RoleProvider({ children }) {
-  const [role, setRoleState] = useState(null);
+  const { role } = useAuth();
 
-  const setRole = (newRole) => {
-    setRoleState(newRole);
-  };
+  // Provide a no-op setRole for legacy compatibility
+  const setRole = () => {};
 
   return (
     <RoleContext.Provider value={{ role, setRole }}>
