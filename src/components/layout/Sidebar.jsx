@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
-  LayoutDashboard, Car, Calendar, Package, BarChart2,
+  LayoutDashboard, Bike, Calendar, Package, BarChart2,
   TrendingUp, Settings, User, LogOut, Wrench,
 } from 'lucide-react';
 import { useRole } from '../../context/RoleContext';
@@ -10,14 +10,15 @@ import { useAuth } from '../../context/AuthContext';
 export const NAV_CONFIGS = {
   admin: [
     { label: 'Dashboard',   icon: LayoutDashboard, path: '/admin/dashboard' },
-    { label: 'Vehicles',    icon: Car,             path: '/admin/vehicles' },
+    { label: 'Vehicles',    icon: Bike,            path: '/admin/vehicles' },
     { label: 'Bookings',    icon: Calendar,        path: '/admin/bookings' },
+    { label: 'Mechanics',   icon: Wrench,          path: '/admin/mechanics' },
     { label: 'Inventory',   icon: Package,         path: '/admin/inventory' },
     { label: 'Reports',     icon: BarChart2,       path: '/admin/reports' },
   ],
   customer: [
     { label: 'Dashboard',   icon: LayoutDashboard, path: '/customer/dashboard' },
-    { label: 'Vehicles',    icon: Car,             path: '/customer/vehicles' },
+    { label: 'Vehicles',    icon: Bike,            path: '/customer/vehicles' },
     { label: 'Bookings',    icon: Calendar,        path: '/customer/bookings' },
     { label: 'Inventory',   icon: Package,         path: '/customer/inventory' },
     { label: 'Reports',     icon: BarChart2,       path: '/customer/reports' },
@@ -48,7 +49,7 @@ export default function Sidebar() {
       <div className="px-4 py-5 border-b border-white/5">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
-            <Car size={20} className="text-primary" />
+            <Bike size={20} className="text-primary" />
           </div>
           <div className="min-w-0">
             <p className="text-white font-bold text-sm leading-tight">BikeCare Connect</p>

@@ -16,7 +16,7 @@ export default function VehicleCard({ vehicle, role = 'customer' }) {
           <img src={image} alt={`${year} ${make} ${model}`} className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-            <span className="text-2xl">🚗</span>
+            <span className="text-2xl">🏍️</span>
           </div>
         )}
         {primary && (
@@ -33,7 +33,7 @@ export default function VehicleCard({ vehicle, role = 'customer' }) {
           <StatusPill status={status} />
         </div>
         <p className="text-xs text-text-secondary mb-3">
-          VIN: {vin} • Mileage: {mileage?.toLocaleString()} mi
+          VIN: {vin} • Mileage: {mileage?.toLocaleString()} km
         </p>
         <div className="flex gap-2">
           {status === 'in-service' ? (

@@ -3,7 +3,7 @@ export const bookings = [
   {
     id: 'BK-001',
     customer: { name: 'Alice Walker', initials: 'AW', color: '#0F2A4A' },
-    vehicle: "Toyota Camry '19",
+    vehicle: "KTM Duke 390 '20",
     serviceType: 'Full Service',
     time: '09:00 AM',
     mechanic: 'Sarah Jenkins',
@@ -12,7 +12,7 @@ export const bookings = [
   {
     id: 'BK-002',
     customer: { name: 'Marcus Pierce', initials: 'MP', color: '#64748B' },
-    vehicle: "BMW X5 '21",
+    vehicle: "Royal Enfield Classic 350 '22",
     serviceType: 'Brake Inspection',
     time: '10:30 AM',
     mechanic: 'Mike Torres',
@@ -21,7 +21,7 @@ export const bookings = [
   {
     id: 'BK-003',
     customer: { name: 'Sarah Chen', initials: 'SC', color: '#2563EB' },
-    vehicle: "Honda Civic '20",
+    vehicle: "Yamaha YZF-R15 '21",
     serviceType: 'Oil Change',
     time: '12:00 PM',
     mechanic: 'J. Doe',
@@ -30,7 +30,7 @@ export const bookings = [
   {
     id: 'BK-004',
     customer: { name: 'David Kim', initials: 'DK', color: '#16A34A' },
-    vehicle: "Tesla Model 3 '22",
+    vehicle: "Ola S1 Pro '22",
     serviceType: 'Diagnostic',
     time: '02:00 PM',
     mechanic: 'M. Smith',
@@ -39,7 +39,7 @@ export const bookings = [
 ];
 
 export const adminStats = {
-  revenue: { current: '$42.5k', previous: '$38.0k', change: '+12%', trend: 'up' },
+  revenue: { current: '₹4.25L', previous: '₹3.80L', change: '+12%', trend: 'up' },
   activeBookings: { current: 18, dueToday: 8, change: '+3', trend: 'up' },
   mechanicUtilization: { percentage: 85, capacity: '17/20', trend: 'stable' },
 };

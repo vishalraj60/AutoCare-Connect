@@ -33,7 +33,7 @@ export function MechanicDashboard() {
           <div className="flex items-center justify-between">
             <div>
               <p className="font-bold text-text-primary">Job #AC-8829</p>
-              <p className="text-sm text-text-secondary">2022 BMW X5 — In Service</p>
+              <p className="text-sm text-text-secondary">2022 Royal Enfield Classic 350 — In Service</p>
             </div>
             <Button variant="primary" onClick={() => navigate('/mechanic/jobs/AC-8829')}>
               Open Job
@@ -56,7 +56,7 @@ export function MechanicJobs() {
           <div className="flex items-center justify-between">
             <div>
               <p className="font-bold text-text-primary">Job #AC-8829</p>
-              <p className="text-sm text-text-secondary">2022 BMW X5 — In Service · Bay 3</p>
+              <p className="text-sm text-text-secondary">2022 Royal Enfield Classic 350 — In Service · Bay 3</p>
             </div>
             <Button variant="primary" onClick={() => navigate('/mechanic/jobs/AC-8829')}>
               View Details

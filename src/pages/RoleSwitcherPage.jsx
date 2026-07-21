@@ -51,12 +51,12 @@ export default function RoleSwitcherPage() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ minHeight: '100vh', background: '#060d1f', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', fontFamily: 'Inter, system-ui, sans-serif' }}>
+    <div style={{ minHeight: '100vh', background: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', fontFamily: 'Inter, system-ui, sans-serif' }}>
       {/* Ambient blobs */}
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(29,78,216,0.18) 0%, transparent 70%)', filter: 'blur(40px)' }} />
-        <div style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: 420, height: 420, borderRadius: '50%', background: 'radial-gradient(circle, rgba(5,150,105,0.15) 0%, transparent 70%)', filter: 'blur(40px)' }} />
-        <div style={{ position: 'absolute', top: '40%', left: '45%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(217,119,6,0.10) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+        <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(29,78,216,0.07) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+        <div style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: 420, height: 420, borderRadius: '50%', background: 'radial-gradient(circle, rgba(5,150,105,0.07) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+        <div style={{ position: 'absolute', top: '40%', left: '45%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(217,119,6,0.05) 0%, transparent 70%)', filter: 'blur(40px)' }} />
       </div>
 
       {/* Header */}
@@ -67,12 +67,12 @@ export default function RoleSwitcherPage() {
             <ShieldCheck size={22} color="#fff" />
           </div>
           <div style={{ textAlign: 'left' }}>
-            <p style={{ color: '#fff', fontWeight: 800, fontSize: 18, margin: 0, letterSpacing: '-0.3px' }}>BikeCare Connect</p>
-            <p style={{ color: '#64748b', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', margin: 0 }}>Enterprise Management</p>
+            <p style={{ color: '#0F172A', fontWeight: 800, fontSize: 18, margin: 0, letterSpacing: '-0.3px' }}>BikeCare Connect</p>
+            <p style={{ color: '#94a3b8', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', margin: 0 }}>Enterprise Management</p>
           </div>
         </div>
 
-        <h1 style={{ color: '#f1f5f9', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, margin: '0 0 12px', letterSpacing: '-0.5px' }}>
+        <h1 style={{ color: '#0F172A', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, margin: '0 0 12px', letterSpacing: '-0.5px' }}>
           Select Your Role
         </h1>
         <p style={{ color: '#64748b', fontSize: 15, maxWidth: 420, margin: '0 auto', lineHeight: 1.6 }}>
@@ -88,24 +88,23 @@ export default function RoleSwitcherPage() {
             <div
               key={role.id}
               style={{
-                background: 'rgba(15,22,40,0.7)',
-                border: `1px solid rgba(255,255,255,0.08)`,
+                background: '#ffffff',
+                border: `1px solid #E2E8F0`,
                 borderRadius: 20,
                 overflow: 'hidden',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
                 cursor: 'pointer',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
                 transition: 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.25s ease',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.boxShadow = `0 20px 60px ${role.borderGlow}, 0 0 0 1px ${role.borderGlow}`;
-                e.currentTarget.style.borderColor = role.borderGlow;
+                e.currentTarget.style.boxShadow = `0 20px 50px ${role.borderGlow}, 0 0 0 1px ${role.borderGlow}`;
+                e.currentTarget.style.borderColor = role.accent;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)';
+                e.currentTarget.style.borderColor = '#E2E8F0';
               }}
               onClick={() => navigate(role.loginPath)}
             >
@@ -126,7 +125,7 @@ export default function RoleSwitcherPage() {
 
               {/* Card body */}
               <div style={{ padding: '22px 24px 24px' }}>
-                <h3 style={{ color: '#f1f5f9', fontSize: 20, fontWeight: 700, margin: '0 0 8px', letterSpacing: '-0.3px' }}>{role.title}</h3>
+                <h3 style={{ color: '#0F172A', fontSize: 20, fontWeight: 700, margin: '0 0 8px', letterSpacing: '-0.3px' }}>{role.title}</h3>
                 <p style={{ color: '#64748b', fontSize: 13.5, lineHeight: 1.65, margin: '0 0 22px' }}>{role.description}</p>
 
                 {/* Button */}
@@ -170,7 +169,7 @@ export default function RoleSwitcherPage() {
       </div>
 
       {/* Footer note */}
-      <p style={{ marginTop: 36, color: '#334155', fontSize: 12, textAlign: 'center' }}>
+      <p style={{ marginTop: 36, color: '#94a3b8', fontSize: 12, textAlign: 'center' }}>
         Demo platform — credentials shown on each login page
       </p>
     </div>

@@ -2,7 +2,7 @@
 export const jobs = [
   {
     id: 'AC-8829',
-    vehicleId: 'BMW-X5-2022',
+    vehicleId: 'RE-CLASSIC-350-2022',
     bayNumber: 3,
     mechanicId: 'M-001',
     mechanicName: 'Mike Torres',
@@ -17,7 +17,7 @@ export const jobs = [
     checklist: [
       { id: 'c1', title: 'Synthetic Oil Change',      subtitle: 'Filter included',    checked: true,  status: 'ok',      note: '' },
       { id: 'c2', title: 'Front Brake Pads',          subtitle: 'Rotors resurfaced',  checked: true,  status: 'worn',    note: '' },
-      { id: 'c3', title: 'Tire Rotation & Balance',   subtitle: 'Check tread depth',  checked: false, status: 'pending', note: '' },
+      { id: 'c3', title: 'Chain Cleaning & Lube',     subtitle: 'Check slackness',    checked: false, status: 'pending', note: '' },
     ],
     photos: [
       { id: 'p1', label: 'Before: Brakes', type: 'before', src: null },
@@ -30,12 +30,12 @@ export const jobs = [
       phone: '+1 (555) 012-3456',
     },
     vehicle: {
-      make: 'BMW',
-      model: 'X5 xDrive40i',
+      make: 'Royal Enfield',
+      model: 'Classic 350',
       year: 2022,
-      license: 'ABC-1234',
-      vin: 'WBAJV4C0......',
-      mileage: 45210,
+      license: 'KA-01-AB-1234',
+      vin: 'ME3U3S5C8N*******',
+      mileage: 12500,
       image: null,
     },
   },

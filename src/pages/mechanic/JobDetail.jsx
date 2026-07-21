@@ -68,7 +68,7 @@ export default function JobDetail() {
               {/* Vehicle image */}
               <div className="relative">
                 <div className="w-full h-44 bg-gradient-to-br from-slate-200 to-slate-300 rounded-t-xl flex items-center justify-center overflow-hidden">
-                  <span className="text-6xl">🚙</span>
+                  <span className="text-6xl">🏍️</span>
                 </div>
                 <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-white rounded-full px-2.5 py-1 shadow-card-md">
                   <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
@@ -90,7 +90,7 @@ export default function JobDetail() {
                   </div>
                   <div className="bg-slate-50 rounded-lg p-2.5">
                     <p className="text-[9px] font-semibold uppercase tracking-widest text-text-secondary mb-0.5">Mileage</p>
-                    <p className="text-xs font-medium text-text-primary">{job.vehicle.mileage.toLocaleString()} mi</p>
+                    <p className="text-xs font-medium text-text-primary">{job.vehicle.mileage.toLocaleString()} km</p>
                   </div>
                 </div>
 

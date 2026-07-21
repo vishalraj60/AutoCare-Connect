@@ -3,8 +3,8 @@ export const bays = [
   {
     id: 1,
     status: 'occupied', // 'occupied'|'cleaning'|'available'
-    vehicle: 'Ford F-150 (V8)',
-    service: 'Transmission Rebuild',
+    vehicle: 'Royal Enfield Himalayan',
+    service: 'Gearbox Overhaul',
     mechanic: 'M. Smith',
     progress: 80,
   },
@@ -19,7 +19,7 @@ export const bays = [
   {
     id: 3,
     status: 'occupied',
-    vehicle: 'Honda Civic',
+    vehicle: 'TVS Apache RTR 160',
     service: 'Oil Change',
     mechanic: 'J. Doe',
     progress: 70,

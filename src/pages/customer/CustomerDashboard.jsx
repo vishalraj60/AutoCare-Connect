@@ -9,26 +9,26 @@ import { customerStats, vehicles } from '../../data/vehicles';
 import { activity } from '../../data/activity';
 import { currentUser } from '../../data/customers';
 import { useJob } from '../../context/JobContext';
-import { Calendar, Car, FileText, ClipboardCheck } from 'lucide-react';
+import { Calendar, Bike, FileText, ClipboardCheck } from 'lucide-react';
 
 const ICON_MAP = {
   calendar: Calendar,
-  car: Car,
+  car: Bike,
   file: FileText,
 };
 
 const STAT_CARDS = [
   { label: 'NEXT APPOINTMENT', value: customerStats.nextAppointment, icon: Calendar },
-  { label: 'REGISTERED VEHICLES', value: `${customerStats.registeredVehicles} Active`, icon: Car },
+  { label: 'REGISTERED VEHICLES', value: `${customerStats.registeredVehicles} Active`, icon: Bike },
   { label: 'PENDING INVOICES', value: String(customerStats.pendingInvoices), icon: FileText },
 ];
 
 export default function CustomerDashboard() {
   const { getJobByVehicleId } = useJob();
 
-  // Get active job for BMW X5
-  const activeJob = getJobByVehicleId('BMW-X5-2022');
-  const activeVehicle = vehicles.find(v => v.id === 'BMW-X5-2022');
+  // Get active job for RE Classic 350
+  const activeJob = getJobByVehicleId('RE-CLASSIC-350-2022');
+  const activeVehicle = vehicles.find(v => v.id === 'RE-CLASSIC-350-2022');
 
   // Customer stage labels for progress stepper
   const customerStages = [
@@ -56,7 +56,7 @@ export default function CustomerDashboard() {
             {/* Left */}
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <Car size={14} className="text-blue-300" />
+                <Bike size={14} className="text-blue-300" />
                 <span className="text-blue-200 text-xs font-semibold uppercase tracking-widest">Active Service</span>
               </div>
               <h2 className="text-3xl font-bold text-white mb-1">
