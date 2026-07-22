@@ -10,7 +10,7 @@ import { useAuth } from '../../context/AuthContext';
 export const NAV_CONFIGS = {
   admin: [
     { label: 'Dashboard',   icon: LayoutDashboard, path: '/admin/dashboard' },
-    { label: 'Vehicles',    icon: Bike,            path: '/admin/vehicles' },
+    { label: 'Vehicles',    icon: Bike,            path: '/admin/bikes' },
     { label: 'Bookings',    icon: Calendar,        path: '/admin/bookings' },
     { label: 'Mechanics',   icon: Wrench,          path: '/admin/mechanics' },
     { label: 'Inventory',   icon: Package,         path: '/admin/inventory' },

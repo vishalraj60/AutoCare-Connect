@@ -12,7 +12,7 @@ import { adminStats, bookings } from '../../data/bookings';
 import { bays } from '../../data/bays';
 import { inventory } from '../../data/inventory';
 import {
-  Car, TrendingUp, AlertTriangle, Filter, MoreHorizontal, ChevronRight, ArrowUpRight,
+  TrendingUp, AlertTriangle, Filter, MoreHorizontal, ChevronRight, ArrowUpRight,
 } from 'lucide-react';
 
 const ADMIN_USER = { name: 'Admin User', initials: 'AU', avatar: null };
@@ -28,10 +28,10 @@ const TABLE_COLUMNS = [
       </div>
     ),
   },
-  { key: 'vehicle',     label: 'Vehicle',       render: (val) => <span className="text-text-primary">{val}</span> },
-  { key: 'serviceType', label: 'Service Type',   render: (val) => <span className="text-text-primary">{val}</span> },
-  { key: 'time',        label: 'Time',           render: (val) => <span className="font-medium">{val}</span> },
-  { key: 'mechanic',    label: 'Mechanic',       render: (val) => <span className="text-text-secondary">{val}</span> },
+  { key: 'vehicle', label: 'Vehicle', render: (val) => <span className="text-text-primary">{val}</span> },
+  { key: 'serviceType', label: 'Service Type', render: (val) => <span className="text-text-primary">{val}</span> },
+  { key: 'time', label: 'Time', render: (val) => <span className="font-medium">{val}</span> },
+  { key: 'mechanic', label: 'Mechanic', render: (val) => <span className="text-text-secondary">{val}</span> },
   {
     key: 'status',
     label: 'Status',
@@ -78,7 +78,6 @@ export default function AdminDashboard() {
             badgeColor="green"
             subLeft="Due today"
             subRight={String(adminStats.activeBookings.dueToday)}
-            watermarkIcon={Car}
           />
           <StatCard
             label="Mechanic Utilization"
